@@ -1,18 +1,19 @@
 Explain the difference between RDBMS and SQL.
 
-A. 
+A. RDBMS is the relationship management system holding the database and SQL is 
+a query language used to get information the a database.
 
 
-Why do tables need a primary key?
+Why do tables need a primary key? So each row in the database has a unique id.
 
 A. Tables need a primary key to keep track of each item in the table.
 
 
 What is the name given to a table column that references the primary key on another table.
 
-A.
+A. Foreign Key.
 
 
 What do we need in order to have a many too many relationship between two tables.
 
-A.
+A. A third table is needed to hold the foreign keys and link the relationship.
