@@ -18,8 +18,6 @@ function find() {
       "actions.description",
       "actions.notes",
       "actions.completed",
-      "actions.created_at",
-      "actions.updated_at"
     );
 }
 
@@ -35,7 +33,6 @@ function findById() {
       "actions.description",
       "actions.notes",
       "actions.completed",
-      "actions.updated_at"
     );
 }
 
