@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
       res.status(200).json(actions);
     })
     .catch(err => {
-      res.status(500).json(err);
+      res.status(500).json({ error: "actionsRouter error"});
     });
 });
 
@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
       res.status(200).json(added);
     })
     .catch(err => {
-      res.status(500).json(err);
+      res.status(500).json({ error: "actionsRouter error"});
     });
 });
 

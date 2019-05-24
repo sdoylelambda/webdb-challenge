@@ -3,6 +3,10 @@ const router = require("express").Router();
 const Projects = require("./projectModel");
 const Actions = require("../actions/actionsModel");
 
+// const knexConfig = require('../../knexfile');
+
+// const Action=knex(knexConfig.development);
+
 router.get("/", (req, res) => {
   Projects.find()
     .then(projects => {
