@@ -1,9 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 
-// Check after i make files
-const projectsRouter = require('./routes/projects/projectsRouter');
-const actionsRouter = require('./routes/projects/actionsRouter');
+const projectsRouter = require('../routes/projects/projectsRouter')
+const actionsRouter = require('../routes/actions/actionsRouter');
 
 const server = express();
 server.use(helmet());

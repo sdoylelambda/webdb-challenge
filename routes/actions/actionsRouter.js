@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .json({ message: "There is an error retrieving the action." });
+.json({ message: "Error retrieving the action." });
     });
 });
 
