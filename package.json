@@ -17,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/sdoylelambda/webdb-challenge/issues"
   },
-  "homepage": "https://github.com/sdoylelambda/webdb-challenge#readme"
+  "homepage": "https://github.com/sdoylelambda/webdb-challenge#readme",
+  "dependencies": {
+    "helmet": "^3.18.0",
+    "knex": "^0.16.5",
+    "sqlite3": "^4.0.8",
+    "yarn": "^1.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
 }
