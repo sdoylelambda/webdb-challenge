@@ -4,7 +4,9 @@
   "description": "This challenge allows you to practice the concepts and techniques learned over the past Sprint and apply them in a concrete project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,15 +17,5 @@
   "bugs": {
     "url": "https://github.com/sdoylelambda/webdb-challenge/issues"
   },
-  "homepage": "https://github.com/sdoylelambda/webdb-challenge#readme",
-  "dependencies": {
-    "dotenv": "^8.0.0",
-    "express": "^4.17.0",
-    "helmet": "^3.18.0",
-    "knex": "^0.16.5",
-    "sqlite3": "^4.0.8"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.0"
-  }
+  "homepage": "https://github.com/sdoylelambda/webdb-challenge#readme"
 }
