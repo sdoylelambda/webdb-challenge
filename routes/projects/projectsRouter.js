@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
 const Projects = require("./projectModel");
-const Actions = require("./actionModel");
+const Actions = require("../actions/actionsModel");
 
-router.get("/projects/", (req, res) => {
+router.get("/", (req, res) => {
   Projects.find()
     .then(projects => {
       res.status(200).json(projects);
@@ -15,7 +15,7 @@ router.get("/projects/", (req, res) => {
     });
 });
 
-router.get("/projects/:id/", (req, res) => {
+router.get("/:id", (req, res) => {
   Projects.findById(req.params.id)
     .then(projects => {
       Actions.find()
@@ -27,12 +27,11 @@ router.get("/projects/:id/", (req, res) => {
     })
     .catch(err => {
       res
-        .status(500)
-        .json({ message: "There was an error retrieving the project." });
+        .status(500).json({ message: "There was an error retrieving the project." });
     });
 });
 
-router.post("/projects/", async (req, res) => {
+router.post("/", async (req, res) => {
   const project = req.body;
   if (project.name) {
     try {
@@ -40,11 +39,11 @@ router.post("/projects/", async (req, res) => {
       res.status(201).json(inserted);
     } catch (error) {
       res
-        .status(500).json({ message: "Error creating the project." });
+        .status(400).json({ message: "Error creating the project." });
     }
   } else {
     res
-      .status(400).json({ message: "Please provide the name." });
+      .status(500).json({ message: "Please provide name." });
   }
 });
 

@@ -1,4 +1,4 @@
-const db = require('../actions/dbConfig.js');
+const db = require('../../data/dbConfig');
 
 module.exports = {
   find,
@@ -65,3 +65,4 @@ function remove() {
     .where({ id })
     .del();
 }
+

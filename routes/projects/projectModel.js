@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const Projects = require("./projectModel");
-const Actions = require("./actionModel");
+const Actions = require("../actions/actionsModel");
 
 router.get("/", (req, res) => {
   Projects.find()
