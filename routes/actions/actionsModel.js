@@ -13,8 +13,8 @@ function find() {
     .join("projects", "actions.project_id", "=", "projects.id")
     .select(
       { project: "projects.name" },
-      { "project description": "projects.description" },
-      { "action id": "actions.id" },
+      { "project description" : "projects.description" },
+      { "action id" : "actions.id" },
       "actions.description",
       "actions.notes",
       "actions.completed",
