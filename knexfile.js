@@ -3,7 +3,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      // check db name  !!!!!!
+  
       filename: './data/lambda.db3', // the folder will be created when we run the migrations
     },
     // STEP 1
@@ -22,10 +22,10 @@ module.exports = {
 
 
 
-    // pool: {
-    //   afterCreate: (conn, done) => {
-    //     conn.run('PRAGMA foreign_keys = ON', done)
-    //   }
-    // }
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done)
+      }
+    }
   },
 };
