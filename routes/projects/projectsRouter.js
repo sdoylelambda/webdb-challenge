@@ -1,39 +1,52 @@
-const projectsRouter = require('express').Router();
-const knex = require('knex');
+const router = require("express").Router();
 
-const db = knex(knexConfig.development);
+const Projects = require("./projects-model");
+const Actions = require("./actions-model");
+const db = require("../data/dbConfig");
 
-projectsRouter.get('/', (req, res) => {
-    db('projects')
-    .then(actions => {
-        a
+router.get("/projects/", (req, res) => {
+  Projects.find()
+    .then(projects => {
+      res.status(200).json(projects);
     })
-})
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "There was an error retrieving the project." });
+    });
+});
 
-projectsRouter.get('/:id', (req, res) => {
-    db('projects')
-    const id = {req.params.id}
-    .where({ id }).first().then(project => {
-        res.200
+router.get("/projects/:id/", (req, res) => {
+  Projects.findById(req.params.id)
+    .then(projects => {
+      Actions.find()
+        .where({ project_id: req.params.id })
+        .then(actions => {
+          projects.actions = actions;
+          return res.status(200).json(projects);
+        });
     })
-})
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "There was an error retrieving the project." });
+    });
+});
 
-projectsRouter.post('/', (req, res) => {
-    db('projects')
-    .insert(req.body)
-    .then(project => {
-        db('projects')
-        .then(projects2 => {
-            projects2. res.
-        })
-    })
-})
+router.post("/projects/", async (req, res) => {
+  const project = req.body;
+  if (project.name) {
+    try {
+      const inserted = await Projects.add(project);
+      res.status(201).json(inserted);
+    } catch (error) {
+      res
+        .status(500).json({ message: "Error creating the project." });
+    }
+  } else {
+    res
+      .status(400).json({ message: "Please provide the name." });
+  }
+});
 
-projectsRouter.put('/:id', (req, res) => {
-    db('actions')
-    .where({ id })
-})
-
-projectsRouter.delete('/:id'), (req, res) => {
-    
-}
+module.exports = router;
