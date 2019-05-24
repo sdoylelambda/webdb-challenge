@@ -47,4 +47,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete('/:id', (req, res) => {
+  db('projects')
+  .where({ id:req.params.id })
+  .del()
+  .then(count=> {
+      if (count > 0) {
+         res.status(200).json({ message: "The Project was deleted"}) 
+      } else { 
+         res.status(404).json({ message:"Not found, not able to delete."})
+      }
+        })
+  .catch(err => {res.status(500).json(err)})
+})
+
 module.exports = router;

@@ -11,7 +11,6 @@ server.use(express.json());
 server.use('./api/projects', projectsRouter);
 server.use('api/actions', actionsRouter);
 
-// sanity check
 server.get('/', (req, res) => {
     res.send('<h1>sanity check</h1>')
 })

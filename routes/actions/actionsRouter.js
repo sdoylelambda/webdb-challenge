@@ -8,8 +8,7 @@ router.get("/", (req, res) => {
       res.status(200).json(actions);
     })
     .catch(err => {
-      res
-        .status(500).json({ message: "Error retrieving the action." });
+      res.status(500).json(err);
     });
 });
 
@@ -19,7 +18,7 @@ router.post("/", (req, res) => {
       res.status(200).json(added);
     })
     .catch(err => {
-      res.status(500).json({ message: "There is an error adding the action." });
+      res.status(500).json(err);
     });
 });
 

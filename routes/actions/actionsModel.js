@@ -25,7 +25,7 @@ function find() {
 
 function findById() {
   return db("actions")
-    .where({ "actions.project_id": id })
+    .where({ "actions.project_id" : id })
     .first()
     .join("projects", "actions.project_id", "=", "projects.id")
     .select(
@@ -42,7 +42,7 @@ function findById() {
 function add(action) {
   return db("actions")
     .insert(action, "id")
-    .then(([id]) => {
+    .then(([ id ]) => {
       return findById(id);
     });
 }
