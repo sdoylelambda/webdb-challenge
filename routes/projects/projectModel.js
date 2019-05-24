@@ -1,50 +1,46 @@
-const router = require("express").Router();
+const db = require("../../data/dbConfig");
 
-const Projects = require("./projectModel");
-const Actions = require("../actions/actionsModel");
+module.exports = {
+  find,
+  findById,
+  add,
+  update,
+  remove
+};
 
-router.get("/", (req, res) => {
-  Projects.find()
-    .then(projects => {
-      res.status(200).json(projects);
-    })
-    .catch(err => {
-      res
-        .status(500).json({ message: "Error retrieving the project." });
+function find() {
+  return db("projects");
+}
+
+function findById(id) {
+  return db("projects")
+    .where({ id })
+    .first();
+}
+
+function add(project) {
+  return db("projects")
+    .insert(project, "id")
+    .then(([ id ]) => {
+      return findById(id);
     });
-});
+}
 
-router.get("/:id/", (req, res) => {
-  Projects.findById(req.params.id)
-    .then(projects => {
-      Actions.find()
-        .where({ project_id: req.params.id })
-        .then(actions => {
-          projects.actions = actions;
-          return res.status(200).json(projects);
-        });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ message: "Error retrieving the project." });
+function update() {
+  return db("projects")
+    .where({ id })
+    .update(changes)
+    .then(count => {
+      if (count > 0) {
+        return findById(id);
+      } else {
+        return null;
+      }
     });
-});
+}
 
-router.post("/", async (req, res) => {
-  const project = req.body;
-  if (project.name) {
-    try {
-      const inserted = await Projects.add(project);
-      res.status(201).json(inserted);
-    } catch (error) {
-      res
-        .status(500).json({ message: "Error creating the project." });
-        }
-    } else {
-        res
-        .status(400).json({ message: "Please provide the name ." });
-    }
-});
-
-module.exports = router;
+function remove() {
+  return db("projects")
+    .where(id)
+    .del();
+}
